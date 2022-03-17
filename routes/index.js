@@ -1,7 +1,7 @@
 require('dotenv').config();
 const router = require('express').Router()
-const main = require('../controllers/mainController');
+const createTable = require('../controllers/createTableController');
 
-router.get('/api', main);
+router.post('/api/create-table', createTable);
 
 module.exports = router;
