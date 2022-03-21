@@ -1,14 +1,34 @@
-const mysql = require('mysql');
+const { Sequelize, Op, Model, DataTypes } = require('sequelize');
 
-let db = mysql.createConnection({
-    host: process.env.DB_HOST,
-    user: process.env.DB_USER,
-    password: process.env.DB_PASSWORD,
-    database: 'QueryBuilder'
-});
+const sequelize = new Sequelize(
+    'QueryBuilder', 
+    process.env.DB_USER, 
+    process.env.DB_PASSWORD,
+    {
+        host: process.env.DB_HOST,
+        dialect: 'mysql'
+    }
+);
 
-db.connect((err) => {
-    if(err) throw err;
-});
+module.exports = {
+    Sequelize,
+    sequelize,
+    Op,
+    Model,
+    DataTypes
+};
 
-module.exports = db;
+// const mysql = require('mysql');
+
+// let db = mysql.createConnection({
+//     host: process.env.DB_HOST,
+//     user: process.env.DB_USER,
+//     password: process.env.DB_PASSWORD,
+//     database: 'QueryBuilder'
+// });
+
+// db.connect((err) => {
+//     if(err) throw err;
+// });
+
+// module.exports = db;
